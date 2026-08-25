@@ -46,7 +46,7 @@ ggplot(
 
 fig_3_ions
 
-fig_3_smoothed <- tibble(
+fig_smoothed <- tibble(
     window_start = seq(fig_3_ions$Sample_Date[1],
         fig_3_ions$Sample_Date[nrow(fig_3_ions)],
         by = "9 weeks"
@@ -58,7 +58,7 @@ fig_3_smoothed <- tibble(
     "NH4-N" = NA
 )
 
-fig_3_smoothed
+fig_smoothed
 
 
 # comments from day 10 moving average -------------------------------------------
