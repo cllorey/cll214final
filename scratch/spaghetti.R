@@ -5,30 +5,6 @@ bq2_data <- read_csv("data/knb-lter-luq.20.4923064/QuebradaCuenca2-Bisley.csv")
 bq3_data <- read_csv("data/knb-lter-luq.20.4923064/QuebradaCuenca3-Bisley.csv")
 prm_data <- read_csv("data/knb-lter-luq.20.4923064/RioMameyesPuenteRoto.csv")
 
-## Don't know if I'll need the below, these were day 1 musings to try to get a plot
-
-# fig_3_ions <- fig3_raw |> 
-#   select("Sample_ID", "Sample_Date", "NO3-N", "K", "Mg", "Ca", "NH4-N")
-
-# fig_3_long <- fig_3_ions |> 
-#   pivot_longer(
-#     cols = "NO3-N":"NH4-N",
-#     names_to = "Nutrient",
-#     values_to = "Concentration"
-#   )
-
-# ggplot(
-#     data = fig_3_long,
-#     mapping = aes(
-#         x = Sample_Date,
-#         y = Concentration,
-#         color = Sample_ID
-#     )
-# ) + 
-#   geom_line() +
-#   facet_wrap(~Nutrient, scales = "free")
-
-## DAY 2: Make a for loop for bq1 to get a moving average for just one of the data frames! 
 
 bq1 <- bq1_data |> 
   filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1996-12-31")
