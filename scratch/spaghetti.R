@@ -1,9 +1,58 @@
+source("R/moving-average.R")
 library(tidyverse)
 
 bq1_data <- read_csv("data/knb-lter-luq.20.4923064/QuebradaCuenca1-Bisley.csv")
 bq2_data <- read_csv("data/knb-lter-luq.20.4923064/QuebradaCuenca2-Bisley.csv")
 bq3_data <- read_csv("data/knb-lter-luq.20.4923064/QuebradaCuenca3-Bisley.csv")
 prm_data <- read_csv("data/knb-lter-luq.20.4923064/RioMameyesPuenteRoto.csv")
+
+bq1 <- bq1_data |> 
+  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1996-12-31")
+
+bq2 <- bq2_data |> 
+  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1996-12-31")
+
+bq3 <- bq3_data |> 
+  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1996-12-31")
+
+prm <- prm_data |> 
+  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1996-12-31")
+
+bq1_result <- moving_average(site_data = bq1)
+
+bq2_result <- moving_average(site_data = bq2)
+
+bq3_result <- moving_average(site_data = bq3)
+
+prm_result <- moving_average(site_data = prm)
+
+fig3 <- bind_rows(bq1_result, bq2_result, bq3_result, prm_result)
+
+fig3_long <- fig3 |> 
+  pivot_longer(
+    cols = "no3n_mgl":"nh4n_mgl",
+    names_to = "Nutrient",
+    values_to = "Concentration"
+  )
+
+ggplot(
+    data = fig3_long,
+    mapping = aes(
+        x = window_start,
+        y = Concentration,
+        color = Sample_ID
+    )
+) + 
+  geom_line() +
+  facet_wrap(~Nutrient, scales = "free", ncol = 1) +
+  scale_x_date(name = "Years")
+
+
+
+
+
+# Old spaghetti below this line ------------------------------------------
+
 
 
 bq1 <- bq1_data |> 
