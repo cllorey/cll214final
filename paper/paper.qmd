@@ -8,14 +8,40 @@ format: html
 # Background
 
 # Data
+The raw data has been processed and cleaned. Load the cleaned data and plot it using the code below. 
 
 ```{r}
-#| output: false
 library(tidyverse)
+read_csv("output/clean_data.csv")
 
+ggplot(
+    data = fig3_long,
+    mapping = aes(
+        x = window_start,
+        y = Concentration,
+        linetype = Site
+    )
+) + 
+  geom_line() +
+  geom_vline(xintercept = ymd("1989-09-18"), linetype = "dashed", linewidth = 0.4) +
+  theme_bw() +
+  labs(
+    title = "Hurricane effects on stream chemistry", y = NULL) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
+  theme(legend.title = element_blank()) +
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(.9, .25),
+    legend.justification = c("right", "bottom")) +
+  facet_grid(vars(Nutrient), scales = "free_y", switch = "y") + 
+  theme(strip.placement = "outside") +
+  scale_x_date(name = "Years", sec.axis = dup_axis())
 ```
 
 # Methods
-
+We used a nine week moving average to ...
 
 # Results
