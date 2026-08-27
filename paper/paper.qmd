@@ -12,7 +12,7 @@ The raw data has been processed and cleaned. Load the cleaned data and plot it u
 
 ```{r}
 library(tidyverse)
-read_csv("output/clean_data.csv")
+read_csv("../clean_data.csv")
 
 ggplot(
     data = fig3_long,
