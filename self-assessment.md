@@ -13,4 +13,4 @@ In order to meet this spec, I need to finish adding and organizing my code into 
 
 # Document
 ## Not yet
-I still need to add to and edit my README, specifically the "repository structure" section. Otherwise, my code follows a professional/consistent style. 
+I still need to add to and edit my README, specifically the "repository structure" section. Otherwise, my code follows a professional/consistent style.
