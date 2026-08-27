@@ -5,6 +5,12 @@ This repository contains the instructions and code to reproduce Figure 3 from th
 ## Repository Structure
 **[This section will include information about the repository structure or file organization]**
 
+++ Maybe this section could explain what each chunk of the code does
+#### Importing data into the code
+#### Cleaning the data to be useful
+#### Creating the ggplot
++++++++++++
+
 ## Data Access
 The raw “Chemistry of Stream Water from the Luquillo Mountains" datasets are housed in the **data/knb-lter-luq.20.4923064** folder. The files needed to recreate this figure are as follows:  
 
