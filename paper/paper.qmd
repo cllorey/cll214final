@@ -6,16 +6,17 @@ format: html
 ---
 
 # Background
+[insert background]
 
 # Data
-The raw data has been processed and cleaned. Load the cleaned data and plot it using the code below. 
+The raw data has been processed and cleaned via the 1_clean_data.R script. Load the cleaned data and plot it using the code below. 
 
 ```{r}
 library(tidyverse)
-read_csv("../clean_data.csv")
+fig3 <- read_csv("/Users/courtneylorey/Documents/eds214/cll214final/output/clean_data.csv")
 
 ggplot(
-    data = fig3_long,
+    data = fig3,
     mapping = aes(
         x = window_start,
         y = Concentration,
@@ -33,9 +34,7 @@ ggplot(
   ) +
   theme(legend.title = element_blank()) +
   theme(
-    legend.position = "inside",
-    legend.position.inside = c(.9, .25),
-    legend.justification = c("right", "bottom")) +
+    legend.justification = c("right", "top")) +
   facet_grid(vars(Nutrient), scales = "free_y", switch = "y") + 
   theme(strip.placement = "outside") +
   scale_x_date(name = "Years", sec.axis = dup_axis())
@@ -45,3 +44,4 @@ ggplot(
 We used a nine week moving average to ...
 
 # Results
+[Insert figure]
