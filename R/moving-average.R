@@ -4,11 +4,11 @@ moving_average <- function(site_data) {
   result <- tibble(
     window_start = seq(site_data$Sample_Date[1], site_data$Sample_Date[nrow(site_data)], by = "9 weeks"),
     Site = site_data$Site[1],
-    no3n_mgl = NA, 
-    k_mgl = NA, 
-    mg_mgl = NA, 
-    ca_mgl = NA,
-    nh4n_mgl = NA
+    no3n_ugL = NA, 
+    k_mgL = NA, 
+    mg_mgL = NA, 
+    ca_mgL = NA,
+    nh4n_ugL = NA
   )
 
   # Fill in the iterator and sequence
@@ -22,18 +22,18 @@ moving_average <- function(site_data) {
     in_window <- site_data$Sample_Date >= w1 & site_data$Sample_Date < w2
 
     # Use indexing to pull out the ion concentrations that fall inside the window
-    no3n_window <- site_data$"NO3-N"[in_window]
+    no3n_window <- site_data$`NO3-N`[in_window]
     k_window <- site_data$K[in_window]
     mg_window <- site_data$Mg[in_window]
     ca_window <- site_data$Ca[in_window]
-    nh4n_window <- site_data$"NH4-N"[in_window]
+    nh4n_window <- site_data$`NH4-N`[in_window]
 
     # Calculate the mean of each ion concentration and fill in the result
-    result$no3n_mgl[i] <- mean(no3n_window, na.rm = TRUE)
-    result$k_mgl[i] <- mean(k_window, na.rm = TRUE)
-    result$mg_mgl[i] <- mean(mg_window, na.rm = TRUE)
-    result$ca_mgl[i] <- mean(ca_window, na.rm = TRUE)
-    result$nh4n_mgl[i] <- mean(nh4n_window, na.rm = TRUE)
+    result$no3n_ugL[i] <- mean(no3n_window, na.rm = TRUE)
+    result$k_mgL[i] <- mean(k_window, na.rm = TRUE)
+    result$mg_mgL[i] <- mean(mg_window, na.rm = TRUE)
+    result$ca_mgL[i] <- mean(ca_window, na.rm = TRUE)
+    result$nh4n_ugL[i] <- mean(nh4n_window, na.rm = TRUE)
   }
   return(result)
 }

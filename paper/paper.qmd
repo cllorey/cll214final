@@ -10,8 +10,8 @@ format: html
 # Data
 
 ```{r}
-#| echo: false
-
+#| output: false
+library(tidyverse)
 
 ```
 
