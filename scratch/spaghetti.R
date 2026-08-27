@@ -7,16 +7,22 @@ bq3_data <- read_csv("data/knb-lter-luq.20.4923064/QuebradaCuenca3-Bisley.csv")
 prm_data <- read_csv("data/knb-lter-luq.20.4923064/RioMameyesPuenteRoto.csv")
 
 bq1 <- bq1_data |> 
-  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1996-12-31")
+  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-06-30") |> 
+  mutate(Site = "BQ1") |> 
+  mutate(group_variable = fct_relevel(group_variable, "K", "NO3-N", "Mg", "Ca", "NH4-N"))
+
 
 bq2 <- bq2_data |> 
-  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1996-12-31")
+  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-06-30") |> 
+  mutate(Site = "BQ2")
 
 bq3 <- bq3_data |> 
-  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1996-12-31")
+  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-06-30") |> 
+  mutate(Site = "BQ3")
 
 prm <- prm_data |> 
-  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1996-12-31")
+  filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-06-30")|> 
+  mutate(Site = "PRM")
 
 bq1_result <- moving_average(site_data = bq1)
 
@@ -44,10 +50,39 @@ ggplot(
     )
 ) + 
   geom_line() +
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
   facet_wrap(~Nutrient, scales = "free", ncol = 1) +
   scale_x_date(name = "Years")
 
+# Trying facet grid
 
+ggplot(
+    data = fig3_long,
+    mapping = aes(
+        x = window_start,
+        y = Concentration,
+        linetype = Sample_ID
+    )
+) + 
+  geom_line() +
+  geom_vline(xintercept = ymd("1989-09-18")) +
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
+  theme(legend.title = element_blank()) +
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(.9, .9),
+    legend.justification = c("right", "top")) +
+  facet_grid(vars(Nutrient), scales = "free_y", switch = "y") + 
+  theme(strip.placement = "outside") +
+  scale_x_date(name = "Years", sec.axis = dup_axis())
 
 
 

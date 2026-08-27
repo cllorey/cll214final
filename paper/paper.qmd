@@ -1,0 +1,21 @@
+---
+title: "Recreating Figure 3 of Schaefer et al. (2000)"
+author: "Courtney Lorey"
+date: "2026-08-27"
+format: html
+---
+
+# Background
+
+# Data
+
+```{r}
+#| echo: false
+
+
+```
+
+# Methods
+
+
+# Results

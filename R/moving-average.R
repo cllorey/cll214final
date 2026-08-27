@@ -3,7 +3,7 @@ moving_average <- function(site_data) {
   # Initialize a tibble to contain the results
   result <- tibble(
     window_start = seq(site_data$Sample_Date[1], site_data$Sample_Date[nrow(site_data)], by = "9 weeks"),
-    Sample_ID = site_data$Sample_ID[1],
+    Site = site_data$Site[1],
     no3n_mgl = NA, 
     k_mgl = NA, 
     mg_mgl = NA, 
