@@ -1,15 +1,20 @@
 # Recreating Figure 3 of Schaefer et al. (2000)
 ## Purpose
-This repository contains the instructions and code to reproduce Figure 3 from the paper "Effects of hurricane disturbance on stream water concentrations and fluxes in eight tropical forest watersheds of the Luquillo Experimental Forest, Puerto Rico" by Schaefer et al. (2000)
+This repository contains the instructions and code to reproduce Figure 3 from the paper "Effects of hurricane disturbance on stream water concentrations and fluxes in eight tropical forest watersheds of the Luquillo Experimental Forest, Puerto Rico" by Schaefer et al. (2000) Figure 3 shows nutrient concentrations in Bisley, Puerto Rico streams before and after Hurricane Hugo using 9-wk moving averages.
+
+<img src="images/Schaefer_fig3.jpeg" alt="Original figure 3 from Schaefer et al. (2000)" width="400"/>
 
 ## Repository Structure
-**[This section will include information about the repository structure or file organization]**
-
-++ Maybe this section could explain what each chunk of the code does
-#### Importing data into the code
-#### Cleaning the data to be useful
-#### Creating the ggplot
-+++++++++++
+This repository is structured as follows: 
+- **1_clean_data.R** script imports the raw data and processes it into a useable dataframe for plotting. 
+- **assessments/** contains self- and peer-assessments on the progress of this project.
+- **data/** houses the raw data from this study. 
+- **docs/** hosts the rendered paper.html. 
+- **images/** includes image files for use in this README
+- **output/** contains a .csv of cleaned data, produced by the **1_clean_data.R** script.
+- **paper/** includes the paper.qmd file, which renders the final paper.html.
+- **R/** defines the moving average function for use in data cleaning (in the **moving-average.R** script)
+- **scratch/** contains draft code for the analysis. 
 
 ## Data Access
 The raw “Chemistry of Stream Water from the Luquillo Mountains" datasets are housed in the **data/knb-lter-luq.20.4923064** folder. The files needed to recreate this figure are as follows:  
@@ -19,11 +24,12 @@ The raw “Chemistry of Stream Water from the Luquillo Mountains" datasets are h
 - QuebradaCuenca3-Bisley.csv  
 - RioMameyesPuenteRoto.csv
 
+The raw data was cleaned and formatted for plotting using the 1_clean_data.R script, which produced clean_data.csv in the output folder. The paper.qmd file contains code that loads the clean data independently (e.g. without needing to have all of the raw data downloaded locally). 
 
-This data is maintained online through the Environmental Data Initiative. You can find them here: [McDowell and International Institute Of Tropical Forestry (IITF) 2024](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.4923064).
+The original data is maintained online through the Environmental Data Initiative. You can find them here: [McDowell and International Institute Of Tropical Forestry (IITF) 2024](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.4923064).
 
 ## Authors
-Courtney Lorey
+Courtney Lorey, Master of Environmental Data Science Candidate, Bren School of Environmental Science & Management, University of California, Santa Barbara
 
 ## References 
 McDowell, William H., and USDA Forest Service. International Institute Of Tropical Forestry (IITF). 2024. “Chemistry of Stream Water from the Luquillo Mountains.” Environmental Data Initiative. https://doi.org/10.6073/PASTA/F31349BEBDC304F758718F4798D25458.  

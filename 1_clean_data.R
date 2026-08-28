@@ -24,7 +24,7 @@ prm <- prm_data |>
   filter(Sample_Date >= "1988-01-01" & Sample_Date <= "1994-06-30")|> 
   mutate(Site = "PRM")
 
-# Use the stored function to calculate the moving average for each site 
+# Use the stored function to calculate the 9-week moving average for each site 
 bq1_result <- moving_average(site_data = bq1)
 
 bq2_result <- moving_average(site_data = bq2)
@@ -36,7 +36,7 @@ prm_result <- moving_average(site_data = prm)
 # Combine the moving average results into one dataframe
 fig3 <- bind_rows(bq1_result, bq2_result, bq3_result, prm_result)
 
-# Prepare the combined dataframe for plotting 
+# Prepare the combined dataframe for plotting by pivoting by nutrient
 fig3_long <- fig3 |> 
   pivot_longer(
     cols = "no3n_ugL":"nh4n_ugL",
@@ -44,4 +44,5 @@ fig3_long <- fig3 |>
     values_to = "Concentration"
   )
 
+# Create a .csv of the resulting dataframe, send it to the output folder 
 write_csv(fig3_long, "output/clean_data.csv")
