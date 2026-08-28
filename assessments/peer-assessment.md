@@ -1,3 +1,8 @@
+---
+title: Peer Assessment
+format: html
+---
+
 # Automate
 
 ## The entire analysis is automated

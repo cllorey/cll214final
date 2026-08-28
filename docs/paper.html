@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Courtney Lorey">
+<meta name="author" content="Courtney Lorey, Master of Environmental Data Science Candidate, Bren School of Environmental Science &amp; Management, University of California, Santa Barbara">
 <meta name="dcterms.date" content="2026-08-28">
 
 <title>Recreating Figure 3 of Schaefer et al.&nbsp;(2000)</title>
@@ -64,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Courtney Lorey </p>
+             <p>Courtney Lorey, Master of Environmental Data Science Candidate, Bren School of Environmental Science &amp; Management, University of California, Santa Barbara </p>
           </div>
   </div>
     
@@ -85,16 +85,16 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="background" class="level1">
 <h1>Background</h1>
-<p>The purpose of this project is to reproduce Figure 3 from the paper “Effects of hurricane disturbance on stream water concentrations and fluxes in eight tropical forest watersheds of the Luquillo Experimental Forest, Puerto Rico” by Schaefer et al.&nbsp;(2000) Figure 3 shows nutrient concentrations specifically in Bisley, Puerto Rico streams before and after Hurricane Hugo using 9-wk moving averages.</p>
+<p>The purpose of this project is to reproduce Figure 3 from the paper “Effects of hurricane disturbance on stream water concentrations and fluxes in eight tropical forest watersheds of the Luquillo Experimental Forest, Puerto Rico” by Schaefer et al.&nbsp;(2000) to determine the reproducibility of this analysis. Figure 3 shows nutrient concentrations specifically in Bisley, Puerto Rico streams before and after Hurricane Hugo using 9-wk moving averages.</p>
 </section>
 <section id="data" class="level1">
 <h1>Data</h1>
-<p>We wanted to look at</p>
-<p>The raw data has been processed and cleaned via the 1_clean_data.R script. Load the cleaned data and plot it using the code below.</p>
+<p>The original data is maintained online through the Environmental Data Initiative. The full data package can be downloaded from the following link: <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.4923064">McDowell and International Institute Of Tropical Forestry (IITF) 2024</a></p>
 </section>
 <section id="methods" class="level1">
 <h1>Methods</h1>
-<p>We used a nine week moving average to …</p>
+<p>First, we created a function to calculate the 9-week moving average of different nutrient concentrations across a given date window, which was stored in R/moving-average.R. From the original raw data package, we isolated the four datasets relevant to figure 3 and loaded them into a data cleaning script (1_clean_data.R), along with the tidyverse and our moving average function.</p>
+<p>Within the data cleaning script, we filtered for the relevant date window (1988-01-01 through 1994-06-30) and added site names to match that of the original paper. We used the stored moving average function to calculate the 9-week moving average of nutrient concentrations for each site, and combined the results into one data frame. We then prepared the combined data frame for plotting by pivoting by each of the five nutrients (calcium, potassium, magnesium, ammonium-N, and nitrate-N) so that each could be plotted on its own grid as part of the larger figure. We then created a .csv file of the resulting cleaned data frame and sent it to the output folder. We took the clean_data.csv file and plotted it in a similar style as the original paper, as demonstrated below.</p>
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>

@@ -1,3 +1,7 @@
+---
+title: Self Assessment
+format: html
+---
 # Automate
 ## Not yet
 I have not yet met this spec as I still have to add the analysis to the Quarto document and ensure it produces the expected output. I have, however, successfully completed the following: 
